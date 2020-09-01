@@ -1,6 +1,6 @@
+import 'package:doctor/screen/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttericon/typicons_icons.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -93,28 +93,32 @@ class _SignUpState extends State<SignUp> {
           SizedBox(
             height: 50,
           ),
-          Container(
-            height: 45,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey, offset: Offset(0, 3), blurRadius: 2)
-              ],
-              gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: <Color>[Color(0xff19769f), Color(0xff35d8a6)]),
+          InkWell(
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Profile())),
+            child: Container(
+              height: 45,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey, offset: Offset(0, 3), blurRadius: 2)
+                ],
+                gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: <Color>[Color(0xff19769f), Color(0xff35d8a6)]),
+              ),
+              child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  )),
             ),
-            child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  'Sign Up',
-                  style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                )),
           ),
         ],
       ),

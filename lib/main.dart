@@ -1,7 +1,7 @@
+import 'package:doctor/screen/home.dart';
 import 'package:doctor/sign/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttericon/typicons_icons.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 void main() {
@@ -10,16 +10,16 @@ void main() {
     theme: ThemeData(
       primaryColor: Color(0xff19769f),
     ),
-    home: MyHomePage(),
+    home: Home(),
   ));
 }
 
-class MyHomePage extends StatefulWidget {
+class Intro extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _IntroState createState() => _IntroState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _IntroState extends State<Intro> {
   List<PageViewModel> _pages() {
     return [
       PageViewModel(

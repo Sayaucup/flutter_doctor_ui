@@ -1,3 +1,4 @@
+import 'package:doctor/screen/home.dart';
 import 'package:doctor/sign/forgetpassword.dart';
 import 'package:doctor/sign/signup.dart';
 import 'package:flutter/material.dart';
@@ -102,45 +103,49 @@ class _SignInState extends State<SignIn> {
               ],
             ),
             SizedBox(
-              height: 30,
+              height: 25,
             ),
-            Container(
-              height: 45,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey, offset: Offset(0, 3), blurRadius: 2)
-                ],
-                gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: <Color>[Color(0xff19769f), Color(0xff35d8a6)]),
+            InkWell(
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Home())),
+              child: Container(
+                height: 45,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey, offset: Offset(0, 3), blurRadius: 2)
+                  ],
+                  gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: <Color>[Color(0xff19769f), Color(0xff35d8a6)]),
+                ),
+                child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Sign In',
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    )),
               ),
-              child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Sign In',
-                    style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  )),
             ),
             SizedBox(
-              height: 25,
+              height: 15,
             ),
             Align(
                 alignment: Alignment.center,
                 child: Text(
                   'Or',
                   style: TextStyle(
-                      fontSize: 17,
+                      fontSize: 15,
                       fontWeight: FontWeight.w500,
                       color: Colors.grey),
                 )),
             SizedBox(
-              height: 25,
+              height: 15,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
