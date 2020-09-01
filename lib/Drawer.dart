@@ -1,4 +1,4 @@
-import 'package:doctor/screen/profile.dart';
+import 'package:doctor/screen/profileuser.dart';
 import 'package:flutter/material.dart';
 
 class Drawerr extends StatefulWidget {

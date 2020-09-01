@@ -1,4 +1,7 @@
+import 'package:date_format/date_format.dart';
+import 'package:doctor/screen/resultfinddoctor.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Specialist {
   final String text;
@@ -26,11 +29,11 @@ class FindDoctor extends StatefulWidget {
 class _FindDoctorState extends State<FindDoctor> {
   Specialist selecteduser1;
   var list1 = [
-    Specialist('1'),
-    Specialist('2'),
-    Specialist('3'),
-    Specialist('4'),
-    Specialist('5'),
+    Specialist('cabut gigi'),
+    Specialist('cabut paru-paru'),
+    Specialist('cabut jantung'),
+    Specialist('cabut ginjal'),
+    Specialist('cabut usus'),
   ];
   Location selecteduser2;
   var list2 = [
@@ -45,8 +48,13 @@ class _FindDoctorState extends State<FindDoctor> {
     Gender('Laki-Laki'),
     Gender('Perempuan'),
   ];
+  DateTime date;
+
   @override
   Widget build(BuildContext context) {
+    var now = DateTime.now();
+    var datee = DateFormat('dd MMMM y');
+    var formatt = datee.format(now);
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
@@ -89,22 +97,164 @@ class _FindDoctorState extends State<FindDoctor> {
                   color: Color(0xff19769f),
                 )),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
-            DropdownButton<Specialist>(
-              hint: Text('Specialist Doctor'),
-              value: selecteduser1,
-              onChanged: (Specialist i) {
-                setState(() {
-                  selecteduser1 = i;
+            Container(
+              height: 40,
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.black54),
+                  borderRadius: BorderRadius.circular(5)),
+              child: DropdownButton<Specialist>(
+                underline: Text(''),
+                isExpanded: true,
+                hint: Text('Specialist Doctor'),
+                value: selecteduser1,
+                onChanged: (Specialist i) {
+                  setState(() {
+                    selecteduser1 = i;
+                  });
+                },
+                items: list1.map((Specialist list1) {
+                  return DropdownMenuItem(
+                    value: list1,
+                    child: Text(
+                      list1.text,
+                      style: TextStyle(
+                          color: selecteduser1 == list1
+                              ? Color(0xff19769f)
+                              : Colors.grey),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+            SizedBox(height: 15),
+            Container(
+              height: 40,
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.black54),
+                  borderRadius: BorderRadius.circular(5)),
+              child: DropdownButton<Location>(
+                underline: Text(''),
+                isExpanded: true,
+                hint: Text('Current Location'),
+                value: selecteduser2,
+                onChanged: (Location i) {
+                  setState(() {
+                    selecteduser2 = i;
+                  });
+                },
+                items: list2.map((Location list2) {
+                  return DropdownMenuItem(
+                    value: list2,
+                    child: Text(
+                      list2.location,
+                      style: TextStyle(
+                          color: selecteduser2 == list2
+                              ? Color(0xff19769f)
+                              : Colors.grey),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+            SizedBox(height: 15),
+            InkWell(
+              onTap: () {
+                showDatePicker(
+                        context: context,
+                        initialDate: date == null ? DateTime.now() : date,
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime(2020, 9, 30, 22, 00))
+                    .then((value) {
+                  setState(() {
+                    date = value;
+                  });
                 });
               },
-              items: list1.map((Specialist list1) {
-                return DropdownMenuItem(
-                  value: list1,
-                  child: Text(list1.text),
-                );
-              }).toList(),
+              child: Container(
+                  height: 40,
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 1, color: Colors.black54),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        date == null ? 'Date' : formatt,
+                        style: TextStyle(
+                            color:
+                                date == null ? Colors.grey : Color(0xff19769f),
+                            fontSize: 16),
+                      ),
+                      Icon(Icons.arrow_drop_down)
+                    ],
+                  )),
+            ),
+            SizedBox(height: 15),
+            Container(
+              height: 40,
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.black54),
+                  borderRadius: BorderRadius.circular(5)),
+              child: DropdownButton<Gender>(
+                underline: Text(''),
+                isExpanded: true,
+                hint: Text('Gender'),
+                value: selecteduser3,
+                onChanged: (Gender i) {
+                  setState(() {
+                    selecteduser3 = i;
+                  });
+                },
+                items: list3.map((Gender list3) {
+                  return DropdownMenuItem(
+                    value: list3,
+                    child: Text(
+                      list3.gender,
+                      style: TextStyle(
+                          color: selecteduser3 == list3
+                              ? Color(0xff19769f)
+                              : Colors.grey),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+            SizedBox(
+              height: 100,
+            ),
+            InkWell(
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Resultfinddoctor())),
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey, offset: Offset(0, 3), blurRadius: 2)
+                  ],
+                  gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: <Color>[Color(0xff19769f), Color(0xff35d8a6)]),
+                ),
+                child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Search',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    )),
+              ),
             ),
           ],
         ),

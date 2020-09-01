@@ -10,7 +10,7 @@ void main() {
     theme: ThemeData(
       primaryColor: Color(0xff19769f),
     ),
-    home: Home(),
+    home: Intro(),
   ));
 }
 

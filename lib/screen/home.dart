@@ -100,14 +100,14 @@ class _HomeState extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Image(
-                          image: AssetImage('assets/image/surgeon.png'),
+                          image: AssetImage('assets/image/hospital.png'),
                           height: 60,
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
-                          'Find Doctor',
+                          'Hospital',
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.black54),
@@ -134,14 +134,14 @@ class _HomeState extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Image(
-                          image: AssetImage('assets/image/surgeon.png'),
+                          image: AssetImage('assets/image/first-aid-kit.png'),
                           height: 60,
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
-                          'Find Doctor',
+                          'Doctoriod',
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.black54),
@@ -194,14 +194,14 @@ class _HomeState extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Image(
-                          image: AssetImage('assets/image/surgeon.png'),
+                          image: AssetImage('assets/image/ambulance.png'),
                           height: 60,
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
-                          'Find Doctor',
+                          'Ambulance',
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.black54),
@@ -220,14 +220,14 @@ class _HomeState extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Image(
-                          image: AssetImage('assets/image/surgeon.png'),
+                          image: AssetImage('assets/image/pill.png'),
                           height: 60,
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
-                          'Find Doctor',
+                          'Medicine Shop',
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.black54),
