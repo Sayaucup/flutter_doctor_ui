@@ -14,6 +14,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  bool _check = false;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -109,7 +110,7 @@ class _SignInState extends State<SignIn> {
               onTap: () => Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Home())),
               child: Container(
-                height: 45,
+                height: 40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   boxShadow: [

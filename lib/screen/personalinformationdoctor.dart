@@ -1,5 +1,6 @@
 import 'package:doctor/screen/resultfinddoctor.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttericon/typicons_icons.dart';
 
 class PersonalInfomationDoctor extends StatefulWidget {
   final Listt list;
@@ -105,11 +106,11 @@ class _PersonalInfomationDoctorState extends State<PersonalInfomationDoctor> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.only(top: 20, left: 15),
+              padding: EdgeInsets.only(top: 15, left: 15),
               child: Text(
                 'About',
                 style: TextStyle(
-                    fontWeight: FontWeight.w600, color: Colors.black87),
+                    fontWeight: FontWeight.w500, color: Colors.black87),
               )),
           Padding(
             padding: EdgeInsets.only(top: 5, left: 25, right: 25),
@@ -127,7 +128,120 @@ class _PersonalInfomationDoctorState extends State<PersonalInfomationDoctor> {
           Divider(
             height: 2,
             color: Colors.black87,
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 15, left: 15),
+            child: Text(
+              'Address & Timing',
+              style:
+                  TextStyle(fontWeight: FontWeight.w500, color: Colors.black87),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 5, left: 25, right: 25),
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  Typicons.location,
+                  size: 10,
+                  color: Color(0xff19769f).withOpacity(0.7),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  widget.list.hospital,
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.blueGrey.withOpacity(0.7)),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 20),
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  Typicons.clock,
+                  size: 10,
+                  color: Color(0xff19769f).withOpacity(0.7),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  '10:00 PM to 20:00 AM',
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.blueGrey.withOpacity(0.7)),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.black87,
+            height: 2,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 15, left: 15),
+            child: Text(
+              'Certification',
+              style:
+                  TextStyle(fontWeight: FontWeight.w500, color: Colors.black87),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 5, left: 25, right: 25),
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  Icons.check_circle_outline,
+                  size: 10,
+                  color: Color(0xff19769f).withOpacity(0.7),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  'BAMS',
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blueGrey.withOpacity(0.7)),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 20),
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  Typicons.clock,
+                  size: 10,
+                  color: Color(0xff19769f).withOpacity(0.7),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  'MBBS',
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blueGrey.withOpacity(0.7)),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.black87,
+            height: 2,
+          ),
         ],
       ),
     );
