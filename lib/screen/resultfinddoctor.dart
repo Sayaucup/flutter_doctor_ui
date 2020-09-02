@@ -1,7 +1,9 @@
+import 'package:doctor/screen/personalinformationdoctor.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/linecons_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class Listt {
@@ -11,9 +13,10 @@ class Listt {
   final String hospital;
   final String km;
   final String rating;
+  final bool status;
 
   Listt(this.img, this.name, this.specialist, this.hospital, this.km,
-      this.rating);
+      this.rating, this.status);
 }
 
 class Resultfinddoctor extends StatefulWidget {
@@ -29,43 +32,52 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
         'Podiatrist',
         'Marjory Turnpike 85534 Lavina Valleys',
         '0.7 km',
-        '4.5'),
+        '4.5',
+        true),
     Listt(
         'https://images.pexels.com/photos/3884140/pexels-photo-3884140.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         'Dr. Arne Padberg',
         'General Practitioner',
         'Keith Courts 33442 Dietrich Harbors',
         '0.7 km',
-        '4.5'),
+        '4.5',
+        false),
     Listt(
         'https://images.pexels.com/photos/4173248/pexels-photo-4173248.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         'Dr. Aniya Hintz',
         'Pediatrician',
         'Jakubowski Skyway 6380 Brakus Harbors',
         '0.7 km',
-        '4.5'),
+        '4.5',
+        true),
     Listt(
         'https://images.pexels.com/photos/3714743/pexels-photo-3714743.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
         'Dr. Mrs. Elmer Kassulke',
         'Endocrinologist',
         'Windler Mountains 462 Lydia Course',
         '0.7 km',
-        '4.5'),
+        '4.5',
+        false),
     Listt(
         'https://images.pexels.com/photos/4167542/pexels-photo-4167542.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
         'Dr. Osvaldo Kuphal',
         'Neurologist',
         'Bergnaum Shore 0972 Hartmann Crest',
         '0.7 km',
-        '4.5'),
+        '4.5',
+        true),
     Listt(
         'https://images.pexels.com/photos/3873193/pexels-photo-3873193.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         'Dr. Marcelle O Kon',
         'Rheumatologist',
         'Daniel Summit 10058 Braun Forge',
         '0.7 km',
-        '4.5'),
+        '4.5',
+        false),
   ];
+  final CameraPosition _initial =
+      CameraPosition(target: LatLng(-7.9968824, 110.2955204), zoom: 35);
+  GoogleMapController _controller;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +123,20 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
         physics: ScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: list.map((e) {
-          final items = <Widget>[
+          final items2 = <Widget>[
+            GoogleMap(
+              trafficEnabled: true,
+              myLocationEnabled: true,
+              onMapCreated: (controller) {
+                setState(() {
+                  _controller = controller;
+                });
+              },
+              initialCameraPosition: _initial,
+              mapType: MapType.normal,
+            )
+          ];
+          final items1 = <Widget>[
             Column(
               children: <Widget>[
                 Padding(
@@ -142,7 +167,8 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
                                   width: 15,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.green),
+                                      color:
+                                          e.status ? Colors.green : Colors.red),
                                 ),
                               )
                             ],
@@ -233,73 +259,98 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
                         )
                       ],
                     ),
-                    Column(
-                      children: <Widget>[
-                        Icon(
-                          FontAwesome5.telegram,
-                          color: Color(0xff19769f).withOpacity(0.7),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          e.km,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                              color: Color(0xff19769f).withOpacity(0.7)),
-                        )
-                      ],
+                    InkWell(
+                      onTap: () {
+                        showModalBottomSheet<void>(
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (BuildContext context) {
+                              return Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 1.46,
+                                  child: Stack(
+                                    children: items2,
+                                  ));
+                            });
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          Icon(
+                            FontAwesome5.telegram,
+                            color: Color(0xff19769f).withOpacity(0.7),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            e.km,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                                color: Color(0xff19769f).withOpacity(0.7)),
+                          )
+                        ],
+                      ),
                     ),
-                    Column(
-                      children: <Widget>[
-                        IconButton(
-                            icon: Icon(
-                              Icons.call,
-                              color: Color(0xff19769f).withOpacity(0.7),
-                            ),
-                            onPressed: () {
-                              UrlLauncher.launch(
-                                  'tel://08979818868'.toString());
-                            }),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          'Call',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                              color: Color(0xff19769f).withOpacity(0.7)),
-                        )
-                      ],
+                    InkWell(
+                      onTap: () {
+                        UrlLauncher.launch('tel://08979818868'.toString());
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          Icon(
+                            Icons.call,
+                            color: Color(0xff19769f),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            'Call',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                                color: Color(0xff19769f).withOpacity(0.7)),
+                          )
+                        ],
+                      ),
                     ),
                   ],
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  height: 40,
-                  decoration: BoxDecoration(
-                      border: Border(
-                          top: BorderSide(width: 1, color: Colors.black12))),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.person_pin_circle,
-                        color: Color(0xff19769f).withOpacity(0.7),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Expanded(child: Text('Personal Information')),
-                      Icon(
-                        Icons.chevron_right,
-                        color: Color(0xff19769f),
-                      )
-                    ],
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PersonalInfomationDoctor(
+                                  list: e,
+                                )));
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    height: 40,
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(width: 1, color: Colors.black12))),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.person_pin_circle,
+                          color: Color(0xff19769f).withOpacity(0.7),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Expanded(child: Text('Personal Information')),
+                        Icon(
+                          Icons.chevron_right,
+                          color: Color(0xff19769f),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Container(
@@ -307,7 +358,8 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
                   height: 40,
                   decoration: BoxDecoration(
                       border: Border(
-                          top: BorderSide(width: 1, color: Colors.black12))),
+                          top: BorderSide(width: 1, color: Colors.black12),
+                          bottom: BorderSide(width: 1, color: Colors.black12))),
                   child: Row(
                     children: <Widget>[
                       Icon(
@@ -370,7 +422,7 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
                   builder: (BuildContext context) {
                     return Container(
                       child: Wrap(
-                        children: items,
+                        children: items1,
                       ),
                     );
                   });
@@ -402,11 +454,11 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
                           left: 1,
                           top: 2,
                           child: Container(
-                            height: 8,
-                            width: 8,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.green),
-                          ),
+                              height: 8,
+                              width: 8,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: e.status ? Colors.green : Colors.red)),
                         )
                       ],
                     ),
