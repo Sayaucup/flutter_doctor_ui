@@ -1,3 +1,5 @@
+import 'package:doctor/screen/addressdetaildoctor.dart';
+import 'package:doctor/screen/appointmentdetails.dart';
 import 'package:doctor/screen/personalinformationdoctor.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
@@ -14,9 +16,10 @@ class Listt {
   final String km;
   final String rating;
   final bool status;
+  final String tel;
 
   Listt(this.img, this.name, this.specialist, this.hospital, this.km,
-      this.rating, this.status);
+      this.rating, this.status, this.tel);
 }
 
 class Resultfinddoctor extends StatefulWidget {
@@ -33,7 +36,8 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
         'Marjory Turnpike 85534 Lavina Valleys',
         '0.7 km',
         '4.5',
-        true),
+        true,
+        '08923242181'),
     Listt(
         'https://images.pexels.com/photos/3884140/pexels-photo-3884140.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         'Dr. Arne Padberg',
@@ -41,7 +45,8 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
         'Keith Courts 33442 Dietrich Harbors',
         '0.7 km',
         '4.5',
-        false),
+        false,
+        '09321342'),
     Listt(
         'https://images.pexels.com/photos/4173248/pexels-photo-4173248.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         'Dr. Aniya Hintz',
@@ -49,7 +54,8 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
         'Jakubowski Skyway 6380 Brakus Harbors',
         '0.7 km',
         '4.5',
-        true),
+        true,
+        '948124142124'),
     Listt(
         'https://images.pexels.com/photos/3714743/pexels-photo-3714743.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
         'Dr. Mrs. Elmer Kassulke',
@@ -57,7 +63,8 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
         'Windler Mountains 462 Lydia Course',
         '0.7 km',
         '4.5',
-        false),
+        false,
+        '77198421783'),
     Listt(
         'https://images.pexels.com/photos/4167542/pexels-photo-4167542.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
         'Dr. Osvaldo Kuphal',
@@ -65,7 +72,8 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
         'Bergnaum Shore 0972 Hartmann Crest',
         '0.7 km',
         '4.5',
-        true),
+        true,
+        '08529421351'),
     Listt(
         'https://images.pexels.com/photos/3873193/pexels-photo-3873193.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         'Dr. Marcelle O Kon',
@@ -73,10 +81,11 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
         'Daniel Summit 10058 Braun Forge',
         '0.7 km',
         '4.5',
-        false),
+        false,
+        '08923242181'),
   ];
   final CameraPosition _initial =
-      CameraPosition(target: LatLng(-7.9968824, 110.2955204), zoom: 35);
+      CameraPosition(target: LatLng(-7.9968824, 110.2955204), zoom: 7);
   GoogleMapController _controller;
   @override
   Widget build(BuildContext context) {
@@ -216,7 +225,7 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
                   e.name,
                   style: TextStyle(
                       color: Color(0xff19769f).withOpacity(0.7),
-                      fontWeight: FontWeight.w700),
+                      fontWeight: FontWeight.w500),
                 ),
                 Text(
                   e.specialist,
@@ -294,7 +303,7 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
                     ),
                     InkWell(
                       onTap: () {
-                        UrlLauncher.launch('tel://08979818868'.toString());
+                        UrlLauncher.launch('tel://${e.tel}'.toString());
                       },
                       child: Column(
                         children: <Widget>[
@@ -353,34 +362,49 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
                     ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  height: 40,
-                  decoration: BoxDecoration(
-                      border: Border(
-                          top: BorderSide(width: 1, color: Colors.black12),
-                          bottom: BorderSide(width: 1, color: Colors.black12))),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Typicons.location,
-                        size: 20,
-                        color: Color(0xff19769f).withOpacity(0.7),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Expanded(child: Text('Working Address')),
-                      Icon(
-                        Icons.chevron_right,
-                        color: Color(0xff19769f),
-                      )
-                    ],
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AddressDetailDoctor(
+                                  details: e,
+                                )));
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    height: 40,
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(width: 1, color: Colors.black12),
+                            bottom:
+                                BorderSide(width: 1, color: Colors.black12))),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Typicons.location,
+                          size: 20,
+                          color: Color(0xff19769f).withOpacity(0.7),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Expanded(child: Text('Working Address')),
+                        Icon(
+                          Icons.chevron_right,
+                          color: Color(0xff19769f),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 InkWell(
-                  // onTap: () => Navigator.push(
-                  //     context, MaterialPageRoute(builder: (context) => Home())),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AppointmentDetails(
+                                details: e,
+                              ))),
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                     height: 35,
@@ -403,7 +427,7 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
                     child: Align(
                         alignment: Alignment.center,
                         child: Text(
-                          'Box Appointment',
+                          'Book Appointment',
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -473,7 +497,7 @@ class _ResultfinddoctorState extends State<Resultfinddoctor> {
                           e.name,
                           style: TextStyle(
                               color: Color(0xff19769f),
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.w500),
                         ),
                         Text(
                           e.specialist,

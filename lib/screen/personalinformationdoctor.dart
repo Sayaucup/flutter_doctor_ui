@@ -87,7 +87,7 @@ class _PersonalInfomationDoctorState extends State<PersonalInfomationDoctor> {
                       widget.list.name,
                       style: TextStyle(
                           color: Color(0xff19769f).withOpacity(0.7),
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w500,
                           fontSize: 15),
                     ),
                     SizedBox(
@@ -221,7 +221,7 @@ class _PersonalInfomationDoctorState extends State<PersonalInfomationDoctor> {
             child: Row(
               children: <Widget>[
                 Icon(
-                  Typicons.clock,
+                  Icons.check_circle_outline,
                   size: 10,
                   color: Color(0xff19769f).withOpacity(0.7),
                 ),
