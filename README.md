@@ -1,5 +1,12 @@
 # ScreenShot App
 
+<table>
+  <tr>
+    <td><img src="assets/screenshot/1.png" width=270 height=350></td>
+    <td><img src="assets/screenshot/1.png" width=270 height=350></td>
+    <td><img src="assets/screenshot/1.png" width=270 height=350></td>
+  </tr>
+ </table>
 <img src="assets/screenshot/1.png" width="350">
 <img src="assets/screenshot/2.png" width="350">
 <img src="assets/screenshot/3.png" width="350">
