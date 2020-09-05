@@ -1,6 +1,6 @@
-import 'package:doctor/screen/addressdetaildoctor.dart';
-import 'package:doctor/screen/appointmentdetails.dart';
-import 'package:doctor/screen/personalinformationdoctor.dart';
+import 'package:doctor/screen/finddoctorcategory/addressdetaildoctor.dart';
+import 'package:doctor/screen/finddoctorcategory/appointmentdetails.dart';
+import 'package:doctor/screen/finddoctorcategory/personalinformationdoctor.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/linecons_icons.dart';

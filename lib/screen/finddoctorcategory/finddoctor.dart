@@ -1,5 +1,4 @@
-import 'package:date_format/date_format.dart';
-import 'package:doctor/screen/resultfinddoctor.dart';
+import 'package:doctor/screen/finddoctorcategory/resultfinddoctor.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -187,8 +186,9 @@ class _FindDoctorState extends State<FindDoctor> {
                       Text(
                         date == null ? 'Date' : formatt,
                         style: TextStyle(
-                            color:
-                                date == null ? Colors.grey : Color(0xff19769f),
+                            color: date == null
+                                ? Colors.black54
+                                : Color(0xff19769f),
                             fontSize: 16),
                       ),
                       Icon(Icons.arrow_drop_down)

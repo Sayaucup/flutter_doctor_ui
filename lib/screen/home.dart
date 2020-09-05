@@ -1,5 +1,6 @@
 import 'package:doctor/Drawer.dart';
-import 'package:doctor/screen/finddoctor.dart';
+import 'package:doctor/screen/finddoctorcategory/appointmentdetails.dart';
+import 'package:doctor/screen/finddoctorcategory/finddoctor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -141,7 +142,7 @@ class _HomeState extends State<Home> {
                           height: 10,
                         ),
                         Text(
-                          'Doctoriod',
+                          'First Aid',
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.black54),

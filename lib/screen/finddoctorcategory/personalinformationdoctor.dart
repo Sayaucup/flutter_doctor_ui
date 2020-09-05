@@ -1,4 +1,4 @@
-import 'package:doctor/screen/resultfinddoctor.dart';
+import 'package:doctor/screen/finddoctorcategory/resultfinddoctor.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/typicons_icons.dart';
 

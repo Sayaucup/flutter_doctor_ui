@@ -1,4 +1,4 @@
-import 'package:doctor/screen/profileuser.dart';
+import 'package:doctor/screen/finddoctorcategory/profileuser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

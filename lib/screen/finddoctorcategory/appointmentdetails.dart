@@ -1,4 +1,4 @@
-import 'package:doctor/screen/resultfinddoctor.dart';
+import 'package:doctor/screen/finddoctorcategory/resultfinddoctor.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/linecons_icons.dart';
 import 'package:fluttericon/octicons_icons.dart';
@@ -234,11 +234,17 @@ class _AppointmentDetailsState extends State<AppointmentDetails> {
                     children: <Widget>[
                       Text(
                         'Total',
-                        style: TextStyle(color: Colors.black87, fontSize: 13),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700),
                       ),
                       Text(
                         '\$120',
-                        style: TextStyle(color: Colors.black87, fontSize: 13),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700),
                       ),
                     ],
                   ),

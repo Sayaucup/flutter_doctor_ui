@@ -1,4 +1,4 @@
-import 'package:doctor/screen/profileuser.dart';
+import 'package:doctor/screen/finddoctorcategory/profileuser.dart';
 import 'package:flutter/material.dart';
 
 class Drawerr extends StatefulWidget {
@@ -52,7 +52,7 @@ class _DrawerrState extends State<Drawerr> {
                           borderRadius: BorderRadius.circular(50)),
                       child: CircleAvatar(
                         radius: 35,
-                        backgroundImage: AssetImage('assets/image/joker.jpg'),
+                        backgroundImage: AssetImage('assets/image/sayaaa.jpg'),
                       ),
                     ),
                   ),
@@ -60,7 +60,7 @@ class _DrawerrState extends State<Drawerr> {
                     height: 15,
                   ),
                   Text(
-                    'Joker',
+                    'Sayaucup',
                     style: TextStyle(
                         fontSize: 25,
                         color: Colors.white,
